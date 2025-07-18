@@ -1,12 +1,81 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Sentiment Analysis</title>
-    </head>
-    <body>
-        <form method="POST">
-            <textarea name="user_text" rows="5"></textarea>
-            <input type="submit" value="Analyze Text">
-        </form>
-    </body>
+  <head>
+    <title>Sentiment Analysis</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>SentimentScope Analyzer</h1>
+      <form method="POST">
+        <textarea
+          name="user_text"
+          rows="5"
+          placeholder="Enter your text here..."
+        ></textarea>
+        <input type="submit" value="Analyze Text" />
+      </form>
+
+      {% if sentiment %}
+      <div class="results">
+        <h2>Sentiment Analysis Results</h2>
+
+        <div class="model-section">
+          <h3>VADER Analysis</h3>
+          <div class="sentiment-scores">
+            <div class="score-item positive">
+              <span class="label">Positive:</span>
+              <span class="value"
+                >{{ "%.1f"|format(sentiment['pos'] * 100) }}%</span
+              >
+            </div>
+            <div class="score-item negative">
+              <span class="label">Negative:</span>
+              <span class="value"
+                >{{ "%.1f"|format(sentiment['neg'] * 100) }}%</span
+              >
+            </div>
+            <div class="score-item neutral">
+              <span class="label">Neutral:</span>
+              <span class="value"
+                >{{ "%.1f"|format(sentiment['neu'] * 100) }}%</span
+              >
+            </div>
+            <div class="score-item compound">
+              <span class="label">Compound:</span>
+              <span class="value"
+                >{{ "%.3f"|format(sentiment['compound']) }}</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="model-section">
+          <h3>Custom Model Analysis</h3>
+          <div class="sentiment-scores">
+            <div class="score-item custom">
+              <span class="label">Positive Score:</span>
+              <span class="value"
+                >{{ "%.3f"|format(sentiment['custom model positive']) }}</span
+              >
+            </div>
+            <div class="score-item custom">
+              <span class="label">Sentiment:</span>
+              <span class="value">
+                {% if sentiment['custom model positive'] > 0.5 %}
+                <span style="color: #28a745">Positive</span>
+                {% else %}
+                <span style="color: #dc3545">Negative</span>
+                {% endif %}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </body>
 </html>

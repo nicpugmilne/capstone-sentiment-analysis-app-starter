@@ -1,1 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  font-weight: 300;
+}
+
+form {
+  margin-bottom: 30px;
+}
+
+textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e1e5e9;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+input[type="submit"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+  transform: translateY(-2px);
+}
+
+.results {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.results h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+}
+
+.model-section {
+  margin-bottom: 30px;
+}
+
+.model-section:last-child {
+  margin-bottom: 0;
+}
+
+.model-section h3 {
+  text-align: center;
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 1.4em;
+  font-weight: 500;
+}
+
+.sentiment-scores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.score-item {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.score-item:hover {
+  transform: translateY(-5px);
+}
+
+.score-item.positive {
+  border-left: 5px solid #28a745;
+}
+
+.score-item.negative {
+  border-left: 5px solid #dc3545;
+}
+
+.score-item.neutral {
+  border-left: 5px solid #6c757d;
+}
+
+.score-item.compound {
+  border-left: 5px solid #007bff;
+}
+
+.score-item.custom {
+  border-left: 5px solid #ffc107;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.value {
+  display: block;
+  font-size: 2em;
+  font-weight: 300;
+  color: #333;
+}
+
+.positive .value {
+  color: #28a745;
+}
+
+.negative .value {
+  color: #dc3545;
+}
+
+.neutral .value {
+  color: #6c757d;
+}
+
+.compound .value {
+  color: #007bff;
+}
+
+.custom .value {
+  color: #ffc107;
+}
